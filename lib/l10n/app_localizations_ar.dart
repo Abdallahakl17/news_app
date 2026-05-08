@@ -9,185 +9,65 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get login_to_your_account => 'تسجيل الدخول إلى حسابك';
+  String get app_name => 'تطبيق الأخبار';
 
   @override
-  String get enter_your_email => 'أدخل بريدك الإلكتروني';
+  String get welcome => 'مرحبًا';
 
   @override
-  String get enter_your_password => 'أدخل كلمة المرور';
+  String get headline => 'إليك بعض الأخبار من أجلك';
 
   @override
-  String get forget_password => 'هل نسيت كلمة المرور؟';
+  String get go_to_home => 'اذهب إلى الرئيسية';
 
   @override
-  String get forget_passwor_reset => 'هل نسيت كلمة المرور';
+  String get theme => 'المظهر';
 
   @override
-  String get reset_password => 'إعادة تعيين كلمة المرور';
+  String get light => 'فاتح';
 
   @override
-  String get login => 'تسجيل الدخول';
-
-  @override
-  String get dont_have_an_account => 'ليس لديك حساب؟';
-
-  @override
-  String get sing_up => 'إنشاء حساب';
-
-  @override
-  String get or => 'أو';
-
-  @override
-  String get login_with_google => 'تسجيل الدخول باستخدام جوجل';
-
-  @override
-  String get signup_with_google => 'إنشاء حساب باستخدام Google';
-
-  @override
-  String get create_your_account => 'إنشاء حسابك';
-
-  @override
-  String get enter_your_name => 'أدخل اسمك';
-
-  @override
-  String get confirm_your_password => 'تأكيد كلمة المرور';
-
-  @override
-  String get already_have_an_account => ' لديك حساب بالفعل؟';
-
-  @override
-  String get welcome_back => 'مرحبًا بعودتك';
+  String get dark => 'داكن';
 
   @override
   String get home => 'الرئيسية';
 
   @override
-  String get favourite => 'المفضلة';
-
-  @override
-  String get profile => 'الملف الشخصي';
-
-  @override
-  String get search_for_event => 'ابحث عن فعالية';
-
-  @override
-  String get dark_mode => 'الوضع الداكن';
+  String get view_full_article => 'عرض المقال كاملًا';
 
   @override
   String get language => 'اللغة';
 
   @override
-  String get logout => 'تسجيل الخروج';
+  String get spanish => 'الإسبانية';
 
   @override
-  String get add_event => 'إضافة فعالية';
+  String get english => 'الإنجليزية';
 
   @override
-  String get title => 'العنوان';
+  String get arabic => 'العربية';
 
   @override
-  String get description => 'الوصف';
+  String get view_all => 'عرض الكل';
 
   @override
-  String get event_title => 'عنوان الفعالية';
+  String get general => 'عام';
 
   @override
-  String get event_description => 'وصف الفعالية';
-
-  @override
-  String get event_date => 'تاريخ الفعالية';
-
-  @override
-  String get event_time => 'وقت الفعالية';
-
-  @override
-  String get choose_time => 'اختر الوقت';
-
-  @override
-  String get choose_date => 'اختر التاريخ';
-
-  @override
-  String get event_details => 'تفاصيل الفعالية';
-
-  @override
-  String get update_event => 'تحديث الفعالية';
+  String get business => 'الأعمال';
 
   @override
   String get sports => 'رياضة';
 
   @override
-  String get birthday => 'عيد ميلاد';
+  String get technology => 'التكنولوجيا';
 
   @override
-  String get book_club => 'نادي كتاب';
+  String get health => 'الصحة';
 
   @override
-  String get all => 'الكل';
+  String get science => 'العلوم';
 
   @override
-  String get exhibition => 'معرض';
-
-  @override
-  String get logoutConfirmationMessage => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
-
-  @override
-  String get ok => 'موافق';
-
-  @override
-  String get cancel => 'إلغاء';
-
-  @override
-  String get title_required => 'العنوان مطلوب';
-
-  @override
-  String get title_too_short => 'يجب أن يكون العنوان على الأقل 3 أحرف';
-
-  @override
-  String get description_required => 'الوصف مطلوب';
-
-  @override
-  String get description_too_short => 'يجب أن يكون الوصف على الأقل 10 أحرف';
-
-  @override
-  String get invalid_email => 'أدخل بريد إلكتروني صحيح';
-
-  @override
-  String get name_required => 'الاسم مطلوب';
-
-  @override
-  String get password_too_short => 'كلمة المرور يجب أن تكون على الأقل 6 أحرف';
-
-  @override
-  String get name_too_short => 'الاسم يجب أن يكون على الأقل حرفين';
-
-  @override
-  String get phone_required => 'رقم الهاتف مطلوب';
-
-  @override
-  String get invalid_phone => 'رقم الهاتف يجب أن يكون 11 رقم';
-
-  @override
-  String get please_choose_time => 'يرجى اختيار الوقت';
-
-  @override
-  String get please_choose_date => 'يرجى اختيار التاريخ';
-
-  @override
-  String get event_added_successfully => 'تمت إضافة الحدث بنجاح';
-
-  @override
-  String get delete_event => 'حذف الحدث';
-
-  @override
-  String get delete_event_message => 'هل تريد حذف هذا الحدث؟';
-
-  @override
-  String get event_deleted_successfully => 'تم حذف الحدث بنجاح';
-
-  @override
-  String get edit_event => 'تعديل الحدث';
-
-  @override
-  String get event_updated_successfully => 'تم تعديل الحدث بنجاح';
+  String get entertainment => 'الترفيه';
 }
