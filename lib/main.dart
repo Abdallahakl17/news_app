@@ -1,18 +1,18 @@
-import 'package:news_app/core/services/api_services.dart';
+import 'package:news_app/core/di/service_locator.dart';
 import 'package:news_app/core/shared/shared.dart';
-import 'package:news_app/data/datasource/remote/remote_data_source_article.dart';
-import 'package:news_app/feature/home/viewmodel/article_view_model.dart';
+import 'package:news_app/feature/home/viewmodel/source_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  final apiService = ApiService();
-  final remoteDatasource = RemoteDatasource(apiService);
+  WidgetsFlutterBinding.ensureInitialized();
+
+  setUp();
 
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ArticleViewModel(remoteDatasource)..fetchNews(),
+          create: (_) => getIt<SourceViewModel>() ,
         ),
       ],
       child: const MyApp(),

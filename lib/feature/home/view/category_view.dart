@@ -10,7 +10,7 @@ class CategoryViewScreen extends StatelessWidget {
   List<CategoryModel> items = [
     CategoryModel(
       id: '0',
-      title: AppText.genrale,
+      title: AppText.general,
       imageLight: AppLightImage.genral,
       imageLDark: AppDarkImage.genral,
     ),

@@ -90,13 +90,21 @@ final ThemeData lightTheme = ThemeData(
       decorationColor: AppLightColor.primaryColor,
     ),
   ),
-  tabBarTheme: TabBarThemeData(
+  tabBarTheme: TabBarThemeData(  tabAlignment: TabAlignment.start,  
+  labelPadding: EdgeInsets.symmetric(horizontal: 16.w),
     labelColor: AppLightColor.primaryColor,
     unselectedLabelColor: AppLightColor.primaryColor,
+
+    labelStyle: TextManager.bodyLarge.copyWith(
+      color: AppLightColor.primaryColor,
+    ),
+    dividerColor: Colors.transparent,
+    unselectedLabelStyle: TextManager.bodyMedium.copyWith(
+      color: AppLightColor.primaryColor,
+    ),
+
     indicatorSize: TabBarIndicatorSize.label,
 
-    labelStyle: TextManager.bodyLarge,
-    unselectedLabelStyle: TextManager.bodyMedium,
     indicator: UnderlineTabIndicator(
       borderSide: BorderSide(color: AppLightColor.primaryColor, width: 2.w),
     ),
