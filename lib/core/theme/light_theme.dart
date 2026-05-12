@@ -69,7 +69,9 @@ final ThemeData lightTheme = ThemeData(
       color: AppLightColor.primaryColor,
     ),
 
-    bodyMedium: TextManager.bodyMedium.copyWith(color: AppLightColor.grayColor),
+    bodyMedium: TextManager.bodyMedium.copyWith(
+      color: AppLightColor.primaryColor,
+    ),
 
     bodySmall: TextManager.bodySmall.copyWith(color: AppLightColor.grayColor),
 
@@ -88,7 +90,17 @@ final ThemeData lightTheme = ThemeData(
       decorationColor: AppLightColor.primaryColor,
     ),
   ),
+  tabBarTheme: TabBarThemeData(
+    labelColor: AppLightColor.primaryColor,
+    unselectedLabelColor: AppLightColor.primaryColor,
+    indicatorSize: TabBarIndicatorSize.label,
 
+    labelStyle: TextManager.bodyLarge,
+    unselectedLabelStyle: TextManager.bodyMedium,
+    indicator: UnderlineTabIndicator(
+      borderSide: BorderSide(color: AppLightColor.primaryColor, width: 2.w),
+    ),
+  ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       minimumSize: Size(double.infinity, 48.h),

@@ -1,9 +1,23 @@
-
+import 'package:news_app/core/services/api_services.dart';
 import 'package:news_app/core/shared/shared.dart';
-
+import 'package:news_app/data/datasource/remote/remote_data_source_article.dart';
+import 'package:news_app/feature/home/viewmodel/article_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  final apiService = ApiService();
+  final remoteDatasource = RemoteDatasource(apiService);
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ArticleViewModel(remoteDatasource)..fetchNews(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,8 +32,9 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
-          routes: RoutesManager.routes,
-          initialRoute: RoutesManager.homeScreen,
+          onGenerateRoute: RoutesManager.onGenerateRoute,
+          initialRoute: RoutesManager.categoryScreen,
+
           debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.light,
           darkTheme: ThemeManger.dark,
