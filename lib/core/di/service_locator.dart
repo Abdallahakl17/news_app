@@ -3,25 +3,29 @@ import 'package:news_app/core/services/api_services.dart';
 
 import 'package:news_app/data/datasource/remote/remote_data_source_article.dart';
 import 'package:news_app/data/datasource/remote/remote_data_source_article_impl.dart';
+import 'package:news_app/data/datasource/remote/remote_data_source_search.dart';
+import 'package:news_app/data/datasource/remote/remote_data_source_search_impl.dart';
 
 import 'package:news_app/data/datasource/remote/remote_data_source_sources.dart';
 import 'package:news_app/data/datasource/remote/remote_data_source_sources_impl.dart';
 
 import 'package:news_app/data/repository/article_repository.dart';
 import 'package:news_app/data/repository/article_repository_impl.dart';
+import 'package:news_app/data/repository/search_repository.dart';
+import 'package:news_app/data/repository/search_repository_impl.dart';
 
 import 'package:news_app/data/repository/source_repository.dart';
 import 'package:news_app/data/repository/source_repository_impl.dart';
 
 import 'package:news_app/feature/home/viewmodel/article_view_model.dart';
+import 'package:news_app/feature/home/viewmodel/search_view_model.dart';
 import 'package:news_app/feature/home/viewmodel/source_view_model.dart';
 
 final getIt = GetIt.instance;
 
 void setUp() {
-   getIt.registerLazySingleton(() => ApiService());
+  getIt.registerLazySingleton(() => ApiService());
 
- 
   getIt.registerLazySingleton<RemoteDataSourceSources>(
     () => RemoteDataSourceSourcesImpl(getIt<ApiService>()),
   );
@@ -30,26 +34,22 @@ void setUp() {
     () => SourceRepositoryImpl(getIt<RemoteDataSourceSources>()),
   );
 
-  getIt.registerFactory(
-    () => SourceViewModel(getIt<SourceRepository>()),
-  );
+  getIt.registerFactory(() => SourceViewModel(getIt<SourceRepository>()));
 
- 
   getIt.registerLazySingleton<RemoteDataSourceArticle>(
-    () => RemoteDataSourceArticleImpl(
-      apiService: getIt<ApiService>(),
-    ),
+    () => RemoteDataSourceArticleImpl(apiService: getIt<ApiService>()),
   );
 
   getIt.registerLazySingleton<ArticleRepository>(
-    () => ArticleRepositoryImpl(
-      dataSource: getIt<RemoteDataSourceArticle>(),
-    ),
+    () => ArticleRepositoryImpl(dataSource: getIt<RemoteDataSourceArticle>()),
   );
 
-  getIt.registerFactory(
-    () => ArticleViewModel(
-      getIt<ArticleRepository>(),
-    ),
+  getIt.registerFactory(() => ArticleViewModel(getIt<ArticleRepository>()));
+  getIt.registerLazySingleton<RemoteDataSourceSearch>(
+    () => RemoteDataSourceSearchImpl(dataSource: getIt<ApiService>()),
   );
+  getIt.registerLazySingleton<SearchRepository>(
+    () => SearchRepositoryImpl(getIt<RemoteDataSourceSearch>()),
+  );
+  getIt.registerFactory(() => SearchViewModel(getIt<SearchRepository>()));
 }

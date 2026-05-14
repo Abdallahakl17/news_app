@@ -1,6 +1,7 @@
 import 'package:news_app/core/di/service_locator.dart';
 import 'package:news_app/core/shared/shared.dart';
 import 'package:news_app/feature/home/viewmodel/article_view_model.dart';
+import 'package:news_app/feature/home/viewmodel/search_view_model.dart';
 import 'package:news_app/feature/home/viewmodel/source_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => getIt<SourceViewModel>()),
         ChangeNotifierProvider(create: (_) => getIt<ArticleViewModel>()),
+        ChangeNotifierProvider(create: (_) => getIt<SearchViewModel>()),
       ],
       child: const MyApp(),
     ),

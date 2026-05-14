@@ -34,7 +34,14 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.categoryModel.title),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, RoutesManager.searchScreen);
+            },
+            icon: Icon(Icons.search),
+          ),
+        ],
       ),
       drawer: Drawer(),
       body: Column(

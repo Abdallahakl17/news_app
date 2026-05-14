@@ -5,4 +5,6 @@ class ApiConstants {
 
   static const String topHeadlines = "top-headlines";
   static const String sources = "top-headlines/sources";
+    static const String everything = 'everything';
+
 }
