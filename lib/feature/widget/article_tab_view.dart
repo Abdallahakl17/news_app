@@ -1,4 +1,5 @@
 import 'package:news_app/core/shared/shared.dart';
+import 'package:news_app/feature/home/view/article_deatials_view.dart';
 import 'package:news_app/feature/home/viewmodel/article_view_model.dart';
 import 'package:news_app/feature/widget/article_items.dart';
 import 'package:provider/provider.dart';
@@ -18,9 +19,7 @@ class _ArticlesTabState extends State<ArticlesTab> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<ArticleViewModel>().getArticles(
-        idSource: widget.sourceId,
-      );
+      context.read<ArticleViewModel>().getArticles(idSource: widget.sourceId);
     });
   }
 
@@ -28,30 +27,39 @@ class _ArticlesTabState extends State<ArticlesTab> {
   Widget build(BuildContext context) {
     return Consumer<ArticleViewModel>(
       builder: (context, vm, _) {
-       if (vm.isLoading) {
-  return const Center(
-    child: CircularProgressIndicator(),
-  );
-}
+        if (vm.isLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-if (vm.errorMessage != null) {
-  return Center(
-    child: Text(vm.errorMessage!),
-  );
-}
+        if (vm.errorMessage != null) {
+          return Center(child: Text(vm.errorMessage!));
+        }
 
-if (vm.articles.isEmpty) {
-  return const Center(
-    child: Text('No Articles Found'),
-  );
-}
+        if (vm.articles.isEmpty) {
+          return const Center(child: Text('No Articles Found'));
+        }
 
         return ListView.separated(
           itemCount: vm.articles.length,
           separatorBuilder: (_, __) => SizedBox(height: 16.h),
           itemBuilder: (context, index) {
-            return ArticleItems(
-              article: vm.articles[index],
+            return InkWell(
+             onTap: () {
+  final article = vm.articles[index];
+
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (_) {
+      return ArticleDetailsView(
+        article: article,
+      );
+    },
+  );
+},
+             
+              child: ArticleItems(article: vm.articles[index]),
             );
           },
         );
