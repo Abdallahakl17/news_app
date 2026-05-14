@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+ 
 import 'package:news_app/core/const/api_constants.dart';
 import 'package:news_app/core/services/api_services.dart';
 import 'package:news_app/data/datasource/remote/remote_data_source_sources.dart';
@@ -19,7 +18,7 @@ class RemoteDataSourceSourcesImpl implements RemoteDataSourceSources {
       },
     );
 
-    final List sources = response.data['sources'];
+    final List<dynamic> sources = response.data['sources'];
 
     return sources
         .map((source) => SourceModel.fromJson(source))

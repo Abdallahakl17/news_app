@@ -90,8 +90,9 @@ final ThemeData lightTheme = ThemeData(
       decorationColor: AppLightColor.primaryColor,
     ),
   ),
-  tabBarTheme: TabBarThemeData(  tabAlignment: TabAlignment.start,  
-  labelPadding: EdgeInsets.symmetric(horizontal: 16.w),
+  tabBarTheme: TabBarThemeData(
+    tabAlignment: TabAlignment.start,
+    labelPadding: EdgeInsets.symmetric(horizontal: 8.w),
     labelColor: AppLightColor.primaryColor,
     unselectedLabelColor: AppLightColor.primaryColor,
 

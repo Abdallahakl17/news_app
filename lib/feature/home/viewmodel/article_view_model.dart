@@ -1,28 +1,32 @@
 import 'dart:developer';
 
 import 'package:news_app/core/shared/shared.dart';
-import 'package:news_app/data/datasource/remote/remote_data_source_article.dart';
 import 'package:news_app/data/models/article_model.dart';
+import 'package:news_app/data/repository/article_repository.dart';
 
 class ArticleViewModel extends ChangeNotifier {
-  final  RemoteDatasource  remoteDatasource  ;
+  final ArticleRepository articleRepository;
+  ArticleViewModel(this.articleRepository);
 
-  ArticleViewModel(this.remoteDatasource);
-
-  List<ArticleModel> articles = [];
   bool isLoading = false;
 
-  Future<void> fetchNews() async {
+  String? errorMessage;
+
+  List<ArticleModel> articles = [];
+
+Future<void> getArticles({required String idSource}) async {
+  try {
     isLoading = true;
+    errorMessage = null;
     notifyListeners();
 
-    try {
-      articles = await  remoteDatasource.getTopHeadlines();
-    } catch (e) {
-      log( e.toString());
-    }
-
+    articles = await articleRepository.getArticle(idSource);
+  } catch (e) {
+    errorMessage = e.toString();
+    log(e.toString());
+  } finally {
     isLoading = false;
     notifyListeners();
   }
+}
 }

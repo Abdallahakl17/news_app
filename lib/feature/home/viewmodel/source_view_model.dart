@@ -13,16 +13,20 @@ class SourceViewModel with ChangeNotifier {
   String? errorMessage;
 
   List<SourceModel> sources = [];
-Future<void> getSources({required String category}) async {
-  isLoading = true;
-  notifyListeners();
 
-  try {
-    sources = await sourceRepository.getSources(category);
-  } catch (e) {
-    errorMessage = e.toString();
+  Future<void> getSources({required String category}) async {
+    try {
+      isLoading = true;
+      errorMessage = null;
+      notifyListeners();
+
+      sources = await sourceRepository.getSources(category);
+    } catch (e) {
+      errorMessage = e.toString();
+      log(e.toString());
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
   }
-
-  isLoading = false;
-  notifyListeners();
-}    }
+}

@@ -1,6 +1,8 @@
 import 'package:news_app/core/shared/shared.dart';
 import 'package:news_app/data/models/category_model.dart';
 import 'package:news_app/feature/home/viewmodel/source_view_model.dart';
+import 'package:news_app/feature/widget/article_items.dart';
+import 'package:news_app/feature/widget/article_tab_view.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,7 +14,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
@@ -25,6 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget build(BuildContext context) {
+    super.build(context);
+
     // final appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
@@ -32,44 +37,51 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
       ),
       drawer: Drawer(),
-      body: Consumer<SourceViewModel>(
-        builder: (context, vm, _) {
-          if (vm.isLoading) {
-            return Center(child: CircularProgressIndicator());
-          }
-          return DefaultTabController(
-            length: vm.sources.length,
-            child: Column(
-              children: [
-                TabBar(
-                  isScrollable: true,
+      body: Column(
+        children: [
+          Expanded(
+            child: Consumer<SourceViewModel>(
+              builder: (context, source, _) {
+                if (source.isLoading) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                return DefaultTabController(
+                  length: source.sources.length,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        TabBar(
+                          isScrollable: true,
 
-                  tabs: vm.sources
-                      .map(
-                        (e) => SizedBox(
-                          height: 60.h,
-                          child: Tab(text: e.name),
+                          tabs: source.sources
+                              .map(
+                                (e) => SizedBox(
+                                  height: 60.h,
+                                  child: Tab(text: e.name),
+                                ),
+                              )
+                              .toList(),
                         ),
-                      )
-                      .toList(),
-                ),
-                // Expanded(
-                //   child: TabBarView(
-                //     children: vm.sources.map((e) {
-                //       return Center(
-                //         child: Text(
-                //           e.name!,
-                //           style: Theme.of(context).textTheme.headlineLarge,
-                //         ),
-                //       );
-                //     }).toList(),
-                //   ),
-                // ),
-              ],
+                        Expanded(
+                          child: TabBarView(
+                            children: source.sources.map((article) {
+                              return ArticlesTab(sourceId: article.id ?? '');
+                            }).toList(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
