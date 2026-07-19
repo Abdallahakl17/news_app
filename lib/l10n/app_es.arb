@@ -1,0 +1,28 @@
+{
+  "app_name": "Aplicación de Noticias",
+  "welcome":"Bienvenido",
+  "headline": "Aquí tienes algunas noticias para ti",
+  "go_to_home": "Ir al inicio",
+
+  "theme": "Tema",
+  "light": "Claro",
+  "dark": "Oscuro",
+
+  "home": "Inicio",
+  "view_full_article": "Ver artículo completo",
+
+  "language": "Idioma",
+  "spanish": "Español",
+  "english": "Inglés",
+  "arabic": "Árabe",
+
+  "view_all": "Ver todo",
+
+  "general": "General",
+  "business": "Negocios",
+  "sports": "Deportes",
+  "technology": "Tecnología",
+  "health": "Salud",
+  "science": "Ciencia",
+  "entertainment": "Entretenimiento"
+}

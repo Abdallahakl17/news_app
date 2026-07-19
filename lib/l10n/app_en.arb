@@ -1,0 +1,28 @@
+{
+  "app_name": "News App",
+  "welcome":"Welcome",
+  "headline": "Here is some news for you",
+  "go_to_home": "Go to Home",
+
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark",
+
+  "home": "Home",
+  "view_full_article": "View Full Article",
+
+  "language": "Language",
+  "spanish": "Español",
+  "english": "English",
+  "arabic": "Arabic",
+
+  "view_all": "View All",
+
+  "general": "General",
+  "business": "Business",
+  "sports": "Sports",
+  "technology": "Technology",
+  "health": "Health",
+  "science": "Science",
+  "entertainment": "Entertainment"
+}
